@@ -1,0 +1,24 @@
+#! /usr/bin/env python
+
+import os
+import json
+
+invalid_files = []
+valid_files = []
+
+
+def parse():
+  cwd = "C:\\Users\\........."
+  print ('\nINVALID JSON FILES:')
+
+  for filename in os.listdir(cwd):
+    with open(cwd+'\\'+filename) as json_file:
+      try:
+        json.load(json_file)
+        valid_files.append(filename)
+      except (ValueError):
+        print (f"Error at {filename}")
+        invalid_files.append(filename)
+
+if __name__ == '__main__':
+    parse()
